@@ -1,0 +1,1 @@
+Use https://www.gitignore.io/api/macos,windows,phpstorm,composer,webstorm,visualstudiocode to generate .gitignore file content for misc use
