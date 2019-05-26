@@ -17,3 +17,7 @@ http://www.unit-conversion.info/texttools/random-string-generator/
 add database/database.sqlite to .gitignore file!
 
 do not forget to add use App\Webserver, etc.
+
+https://github.com/JuanDMeGon/Microservices-with-Lumen_Gateway
+https://github.com/JuanDMeGon/Microservices-with-Lumen_Authors
+

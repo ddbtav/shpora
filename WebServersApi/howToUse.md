@@ -20,3 +20,14 @@ name - MyClient
 redirect - empty
 --> new clent Id and secret
 
+postman:
+http://localhost:8008/oauth/token
+POST
+grant_type: client_credentials
+client_id: {number}
+client_secret: {code}
+
+==> access_token granted
+get request to webservers (8008) with Headers:
+Autorization: {token} or {Bearer token}
+
