@@ -23,3 +23,7 @@ https://github.com/JuanDMeGon/Microservices-with-Lumen_Authors
 
 Teacher: JuanD MeGon
 
+
+config/services - 'market' / 'gateway' params setting
+
+
