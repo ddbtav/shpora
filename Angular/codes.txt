@@ -1,0 +1,122 @@
+  productName = 'to be changed in 7 seconds!'
+
+
+  constructor() {
+    setTimeout(() => {
+      this.productName = 'Changed to NEW VALUE !!!'
+    }, 7000);
+
+   }
+
+   -----------------
+
+HTML:
+<p>
+  {{tempText}}
+</p>
+
+<button (click)="btnClicked()">Click me</button>
+
+<button (click)="tempText = 'Btn clicked - inline!'">Click me - inline</button>
+
+TS:
+  tempText = 'Some dummy text';
+
+  btnClicked(){
+    this.tempText = 'Button clicked!';
+  }
+
+-----------------
+HTML:
+<button (click)="btnClicked()" [disabled]="btnIsDisabled">Click me</button>
+
+TS:
+  btnIsDisabled = true;
+
+  constructor() {
+    setTimeout(() => {
+      this.btnIsDisabled = false;
+    }, 7000);
+   }
+
+-----------------
+HTML:
+<input type="text"  [(ngModel)]="productName">
+
+
+TS:
+requires FormsModule in imports[] + import { FormsModule } from '@angular/forms'; in app.module.ts
+
+
+-----------------
+
+HTML:
+
+<input *ngIf="!btnIsDisabled" type="text"  [(ngModel)]="productName">
+<button *ngIf="!btnIsDisabled" (click)="onAddProduct()">Add to the list</button>
+<div *ngFor="let product of products"> {{product}}</div>
+
+TS:
+
+  onAddProduct() {
+    this.products.push(this.productName);
+  }
+
+-----------------
+TS: (product component)
+import { Input } from '@angular/core';
+
+  @Input() productName: string;
+
+HTML: (product component)
+<p>{{productName}}</p>
+
+HTML: (products - calling component)
+
+<app-product *ngFor="let product of products" [productName]="product"></app-product>
+
+-----------------
+
+
+Passing data from a component:
+In sender TS:
+import {Output, EventEmitter} from '@angular/core';
+  @Output() productClicked = new EventEmitter();
+  onClicked() {
+    this.productClicked.emit();
+  }
+
+In sender HTML:
+<p (click)="onClicked()">{{productName}}</p>
+
+receiver TS:
+  onProductClicked(product) {
+    this.products.push(product);
+  }
+
+receiver HTML:
+<app-product (productClicked)="onProductClicked(product)" ... *ngFor="let product of products" [productName]="product"></app-product>
+
+
+------------
+Form submit.
+TS:
+  onFormSubmit(form) {
+    if (form.valid) {
+      this.products.push(form.value.productName);
+    }
+  }
+
+HTML:
+
+<form (ngSubmit)="onFormSubmit(f)" #f="ngForm">
+  <input type="text"  ngModel name="productName" required>
+  <button type="submit">Add product</button>
+</form>
+
+-------------
+
+
+
+
+

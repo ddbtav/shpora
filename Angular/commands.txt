@@ -1,0 +1,10 @@
+npm  install -g @angular/cli
+sudo npm  install -g @angular/cli
+
+ng new angular-refresher
+
+ng serve 
+(inside the project folder - in command prompt or ide terminal)
+
+ng generate component
+ng g c product

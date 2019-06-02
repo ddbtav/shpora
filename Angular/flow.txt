@@ -1,0 +1,80 @@
+Create component - add to app.module.ts
+    - in declarations: []
+    - import statement
+    - add component selector tag to app.component.html (if not using routes)
+
+-------------------
+
+Property - in ts file
+can  add on html page with {{...}}
+
+--------------------
+
+<input type="text"  [(ngModel)]="productName">
+
+import FormsModule in app.module.ts for ^^^ to work!
+in imports[] + import { FormsModule } from '@angular/forms'; in app.module.ts
+
+--------------------
+
+Passing data to a component:
+@Input() productName ... + import Input from '@angular/core';
+in html of calling component:
+<app-comp... *ngFor="let product of products" [productName]="product"></app-comp...>
+
+
+--------------------
+Passing data from a component:
+In sender TS:
+import {Output, EventEmitter} from '@angular/core';
+  @Output() productClicked = new EventEmitter();
+  onClicked() {
+    this.productClicked.emit();
+  }
+
+In sender HTML:
+<p (click)="onClicked()">{{productName}}</p>
+
+receiver TS:
+  onProductClicked(product) {
+    this.products.push(product);
+  }
+
+receiver HTML:
+<app-product (productClicked)="onProductClicked(product)" ... *ngFor="let product of products" [productName]="product"></app-product>
+
+
+------------
+
+Services 
+add to providers in app.module.ts
+in comp ts file: constructor(private productsService: ProductsService) {
+
+import {Subject} from 'rxjs';
+serviceProductsUpdated = new Subject();
+
+  addProduct(productName: string){
+    this.productsFromService.push(productName);
+    this.serviceProductsUpdated.next();         /// <--- emits the event
+  }
+
+In service consuming component:
+
+  ngOnInit() {
+    this.productsFromService = this.productsService.getProductsFromService();
+    this.productsService.serviceProductsUpdated.subscribe(() => {
+      this.productsFromService = this.productsService.getProductsFromService();
+    });
+  }
+
+import {Subscription} from 'rxjs';
+private serviceProductsSubscription: Subscription;
+
+import {OnDestroy} from '@angular/core';
+export class ProductsComponent implements OnInit, OnDestroy {  // <--- implements OnDestroy
+
+  ngOnDestroy(): void {
+    this.serviceProductsSubscription.unsubscribe();
+  }
+
+
