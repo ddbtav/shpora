@@ -1,0 +1,25 @@
+https://book.cakephp.org/3.0/ru/index.html
+
+
+
+
+
+https://book.cakephp.org/3.0/ru/tutorials-and-examples/bookmarks/part-two.html
+
+
+
+https://bakery.cakephp.org
+
+
+
+DONE:
+https://book.cakephp.org/3.0/ru/intro.html
+https://book.cakephp.org/3.0/ru/intro/cakephp-folder-structure.html
+https://book.cakephp.org/3.0/ru/console-and-shells.html - en only - https://book.cakephp.org/3.0/en/console-and-shells.html
+https://book.cakephp.org/3.0/ru/intro/where-to-get-help.html
+https://book.cakephp.org/3.0/ru/intro/conventions.html
+
+
+~
+https://book.cakephp.org/3.0/en/console-and-shells/commands.html
+https://book.cakephp.org/3.0/ru/tutorials-and-examples/bookmarks/intro.html

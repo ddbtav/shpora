@@ -4,3 +4,6 @@ https://book.cakephp.org/3.0/ru/index.html
 
 https://github.com/friendsofcake/awesome-cakephp - many links
 
+
+https://discourse.cakephp.org/ - forum
+
